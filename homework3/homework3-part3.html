@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #3 for CNIT 133">
+	<title>Keith Chan - CNIT 133 - Homework 3</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+</head>
+<body style = "background-color: #d0d0ff;">
+
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#tempForm").validate({
+			rules:{
+				temperatureInput: {required: true, number: true}
+			}
+		});
+
+		function convert(){
+			if($("#tempForm").valid()){
+				var temperature = parseInt(document.getElementById("temperatureInput").value);
+				if (this.id == "FtoC"){
+					convertFtoC(temperature);
+				}
+				else if (this.id == "CtoF"){
+					convertCtoF(temperature);
+				}
+			}
+			else{
+				$("#resultField").val("Please enter an integer");
+			}
+		};
+		function convertFtoC(temperature){
+				var celsius = Math.round(5/9 * (temperature - 32));
+				$("#resultField").val(celsius + " °C");
+			}
+		
+		function convertCtoF(temperature){
+				var fahrenheit = Math.round(((9/5) * temperature) + 32);
+				$("#resultField").val(fahrenheit + " °F");
+			}
+			
+		$("#FtoC").click(convert);
+		$("#CtoF").click(convert);
+	});
+
+</script>
+<h2>Homework 3 - Part 3 - Temperature Converter</h2>
+<form id = "tempForm">
+<p>Enter a temperature: <input id = "temperatureInput" name = "temperatureInput"></p>
+<input type = "button" value = "Convert Fahrenheit to Celsius!" id = "FtoC">
+<input type = "button" value = "Convert Celsius to Fahrenheit!" id = "CtoF">
+<br>
+<p>Result: <input id = "resultField" readonly></p>
+</form>
+<div class = "links">
+	<ul>
+		<li><a href = "homework3-part1.html">Part 1 - Calculating a student's final score</a></li>
+		<li><a href = "homework3-part2.html">Part 2 - Calculating commissions</a></li>
+		<li><a href = "homework3-part3.html">Part 3 - Converting temperatures</a></li>
+		<li><a href = "homework3-part4.html">Part 4 - Multiplication practice</a></li>
+	</ul>
+</div>
+<a href = "../index.html" class = "links">Back to the main page</a>
+
+</body>
+
+</html>

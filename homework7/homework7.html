@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #7 for CNIT 133">
+	<title>Keith Chan - CNIT 133 - Homework 7</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+
+<style>
+	p {
+		padding: 0px 0px 0px 35px;
+	}
+	div a {
+		padding: 0px 0px 0px 35px;
+	}
+
+</style>
+<script src="https://code.jquery.com/jquery-1.7.1.js"></script>
+<script>
+	$(document).ready(function(){
+		document.getElementById("reveal").style.cursor = "pointer";
+		document.getElementById("reveal1").style.cursor = "pointer";
+		$('.revealLinks').hide();
+		$('.links p').toggle(
+		function() {
+			$(this).next('.revealLinks').slideDown();
+		},
+		function() {
+			$(this).next('.revealLinks').slideUp();
+		}
+		); // end toggle
+	});
+
+</script>
+
+
+</head>
+
+<body style = "background-color: #d0d0ff;">
+
+<h2>This page contains all the links for Homework 7</h2>
+
+<div class = "links">
+		<p id = "reveal">+ Click me to reveal part 1!</p>
+		<div class = "revealLinks">
+			<a href = "homework7-part1.html">Part 1 - Using Selections to Choose Page Style</a>
+		</div>
+		<p id = "reveal1">+ Click me to reveal part 2!</p>
+		<div class = "revealLinks">
+			<a href = "homework7-part2.html">Part 2 - Navigation Bar Practice</a>
+		</div>
+
+</div>
+<br>
+<a href = "../index.html">Back to the main page</a>
+
+</body>
+
+</html>

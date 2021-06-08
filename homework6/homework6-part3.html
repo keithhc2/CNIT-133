@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #6 for CNIT 133">
+	<title>Part 3 - Phone Number Processing</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+
+<style>
+	table, tr, td{
+		border: 1px solid black;
+	}
+	td.numbers{
+		text-align: right;
+	}
+</style>
+
+</head>
+
+<body style = "background-color: #d0d0ff;">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script> 
+<script>
+	$(document).ready(function(){
+		$('input[name="phoneInput"]').mask('(000) 000-0000');
+		document.getElementById("submitButton").addEventListener("click", processPhone);
+	});
+	function processPhone(){
+		var phoneNumber = document.getElementById("phoneInput").value;
+		var splitPhoneNumber = phoneNumber.split(/ |-/);
+		if (splitPhoneNumber.length === 3){
+			var areaCode   = splitPhoneNumber[0].substring(1, 4);
+			var firstThree = splitPhoneNumber[1];
+			var secondFour = splitPhoneNumber[2];
+			if (areaCode.length === 3 && firstThree.length === 3 && secondFour.length === 4){
+				var resultString = "<br><table>";
+
+				resultString += "<tr>";
+				resultString += "<td>Area Code: </td>" + "<td class = 'numbers'>" + areaCode + "</td>";
+				resultString += "</tr>";
+
+				resultString += "<tr>";
+				resultString += "<td>First Three Numbers: </td>" + "<td class = 'numbers'>" + firstThree + "</td>";
+				resultString += "</tr>";
+
+				resultString += "<tr>";
+				resultString += "<td>Second Four Numbers: </td>" + "<td class = 'numbers'>" + secondFour + "</td>";
+				resultString += "</tr>";
+
+				resultString += "</table>";
+				document.getElementById("results").innerHTML = resultString;
+			}
+			else{
+				document.getElementById("results").innerHTML = "<br>Please enter a valid phone number.";
+			}
+		}
+		else{
+			document.getElementById("results").innerHTML = "<br>Please enter a valid phone number.";
+		}
+	}
+
+</script>
+
+<h2>Part 3 - Phone Number Processing</h2>
+
+<label for = "phoneInput">Enter a phone number:</label>
+<input type = "text" name = "phoneInput" id = "phoneInput">
+<input type = "button" value = "Submit" id = "submitButton">
+
+<div id = "results">
+
+</div>
+
+<h2>Other parts of homework 6:</h2>
+<div>
+	<ul>
+		<li><a href = "homework6-part1.html">Part 1 - Using Math Operations for Rounding</a></li>
+		<li><a href = "homework6-part2.html">Part 2 - Counting Character Occurrences</a></li>
+		<li><a href = "homework6-part3.html">Part 3 - Phone Number Processing</a></li>
+	</ul>
+</div>
+<a href = "../index.html">Back to the main page</a>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #3 for CNIT 133">
+	<title>Keith Chan - CNIT 133 - Homework 3</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+</head>
+<body style = "background-color: #d0d0ff;">
+
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#scoreForm").validate({
+			rules: {
+					homework: {required: true, number: true, min: 0, max: 100},
+					midterm: {required: true, number: true, min: 0, max: 100},
+					final: {required: true, number: true, min: 0, max: 100},
+					participation: {required: true, number: true, min: 0, max: 100}
+				},
+			messages: {
+					homework:"Please enter an <i>integer</i> between 0 and 100.",
+					midterm: "Please enter an <i>integer</i> between 0 and 100.",
+					final: "Please enter an <i>integer</i> between 0 and 100.",
+					participation: "Plesae enter an <i>integer</i> between 0 and 100."
+			}
+		});
+	function processNums(){
+		if($("#scoreForm").valid()){
+			var homeworkScore = parseInt(document.getElementById("homework").value);
+			var midtermScore = parseInt(document.getElementById("midterm").value);
+			var finalScore = parseInt(document.getElementById("final").value);
+			var participationScore = parseInt(document.getElementById("participation").value);
+
+			var finalGrade = 0.5*homeworkScore + 0.2*midtermScore + 0.2*finalScore + 0.1*participationScore;
+			var roundedFinalGrade = Math.round(finalGrade);
+			var finalLetter = "";
+			if (90 <= roundedFinalGrade){
+				finalLetter += "This student's final score is " + roundedFinalGrade + ", and his/her grade is A.";
+			}
+			else if (80 <= roundedFinalGrade && roundedFinalGrade <= 89){
+				finalLetter += "This student's final score is " + roundedFinalGrade + ", and his/her grade is B.";
+			}
+			else if (70 <= roundedFinalGrade && roundedFinalGrade <= 79){
+				finalLetter += "This student's final score is " + roundedFinalGrade + ", and his/her grade is C.";
+			}
+			else if (60 <= roundedFinalGrade && roundedFinalGrade <= 69){
+				finalLetter += "This student's final score is " + roundedFinalGrade + ", and his/her grade is D.<br>";
+				finalLetter += "This student must retake the class.";
+			}
+			else if (roundedFinalGrade <= 59){
+				finalLetter += "This student's final score is " + roundedFinalGrade + ", and his/her grade is F.<br>";
+				finalLetter += "This student must retake the class.";
+			}
+			document.getElementById("finalLetter").innerHTML = finalLetter;
+		}
+		else{
+			document.getElementById("finalLetter").innerHTML = "Please verify that your inputs are only integers and are valid.";
+		}
+	}
+	$("#submitButton").click(processNums);
+	});
+
+</script>
+<h2>Homework 3 - Part 1  - Calculating a Student's Grade</h2>
+<form id = "scoreForm">
+	<div>Enter some scores to get a final score for the semester:</div>
+	<br>
+	<table>
+		<tr>
+			<td>Homework average:</td>
+			<td><input name = "homework" id = "homework"></td>
+		</tr>
+		<tr>
+			<td>Midterm exam score:</td>
+			<td><input name = "midterm" id = "midterm"></td>
+		</tr>
+		<tr>
+			<td>Final exam score:</td>
+			<td><input name = "final" id = "final"></td>
+		</tr>
+		<tr>
+			<td>Participation score:</td>
+			<td><input name = "participation" id = "participation"></td>
+		</tr>
+	</table>
+	<br>
+	<input type = "button" value = "Submit" id = "submitButton">
+</form>
+<div id = "finalLetter"></div>
+<h2>Other parts of homework 3:</h2>
+<div class = "links">
+	<ul>
+		<li><a href = "homework3-part1.html">Part 1 - Calculating a student's final score</a></li>
+		<li><a href = "homework3-part2.html">Part 2 - Calculating commissions</a></li>
+		<li><a href = "homework3-part3.html">Part 3 - Converting temperatures</a></li>
+		<li><a href = "homework3-part4.html">Part 4 - Multiplication practice</a></li>
+	</ul>
+</div>
+<a href = "../index.html" class = "links">Back to the main page</a>
+
+</body>
+
+</html>

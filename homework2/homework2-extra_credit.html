@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #2 for CNIT 133">
+	<title>Keith Chan - CNIT 133 - Homework 2</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+<style>
+td {
+  border: 1px solid black;
+
+}
+
+.rate{
+	text-align: right;
+}
+
+.currency{
+	text-align: center;
+}
+
+.convertedCurrency{
+	text-align: right;
+}
+
+</style>
+
+</head>
+<body style = "background-color: #d0d0ff;">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script> 
+  function processClick(){
+  	var amount = parseInt(document.getElementById("textfield").value);
+  	if (isNaN(amount)){
+  		document.getElementById("incorrectInput").innerHTML = "Please only enter integers.";
+  	}
+  	else{
+  		document.getElementById("incorrectInput").innerHTML = "";
+	  	var resultString = "";
+	  	resultString += "Hello!";
+	  	document.getElementById("convertedCurrency1").innerHTML = (amount*0.89).toFixed(2).toString();
+	  	document.getElementById("convertedCurrency2").innerHTML = (amount*1.31).toFixed(2).toString();
+	  	document.getElementById("convertedCurrency3").innerHTML = (amount*7.80).toFixed(2).toString();
+	  	document.getElementById("convertedCurrency4").innerHTML = (amount*108.38).toFixed(2).toString();
+	  	document.getElementById("convertedCurrency5").innerHTML = (amount*19.11).toFixed(2).toString();
+	}	
+  }
+
+$(document).ready(function(){
+  $("#slider").click(function(){
+    $("#conversions").slideToggle("slow");
+  });
+
+  $('#textfield').focus(function() {
+		$(this).css('background-color','yellow');
+	});
+  $("#submitButton").click(processClick);     
+});
+
+</script>
+<h1>Homework 2 Extra Credit</h1>
+<input type = "button" id="slider" value = "Click to Show/Hide Instructions">
+<div id="conversions" style = "display: none">
+	<p>Enter a dollar amount to see the converted rates in July 2019.</p>
+	<form>
+		<div>Monetary Exchange Rates in July 2019</div>
+		<table style = "border: 1px solid black">
+			<tr>
+				<td class = "#currency">Currency</td>
+				<td class = "rate">Rate</td>
+				<td style = "text-align: right;">Value</td>
+			</tr>
+			<tr>
+				<td class = "#currency">Euro</td>
+				<td class = "rate">0.89</td>
+				<td class = "convertedCurrency" id = "convertedCurrency1"></td>
+			</tr>
+			<tr>
+				<td class = "#currency">Canadian Dollar</td>
+				<td class = "rate">1.31</td>
+				<td class = "convertedCurrency" id = "convertedCurrency2"></td>
+			</tr>
+			<tr>
+				<td class = "#currency">Hong Kong Dollar</td>
+				<td class = "rate">7.80</td>
+				<td class = "convertedCurrency" id = "convertedCurrency3"></td>
+			</tr>
+			<tr>
+				<td class = "#currency">Japanese Yen</td>
+				<td class = "rate">108.38</td>
+				<td class = "convertedCurrency" id = "convertedCurrency4"></td>
+			</tr>
+			<tr>
+				<td class = "#currency">Mexican Peso</td>
+				<td class = "rate">19.11</td>
+				<td class = "convertedCurrency" id = "convertedCurrency5"></td>
+			</tr>
+			<tr>
+				<td colspan="2">Enter Amount of U.S. Dollars</td>
+				<td><input type = "text" size = "5" id = "textfield"></td>
+			</tr>
+		</table>
+	</form>
+	<br>
+	<input type = "button" value ="Submit" id = "submitButton">
+	<br>
+</div>
+<div id = "incorrectInput"></div>
+
+<h2>Other parts of homework 2:</h2>
+<div class = "links">
+	<ul>
+		<li><a href = "homework2-part1.html">Part1</a></li>
+		<li><a href = "homework2-part2.html">Part2</a></li>
+		<li><a href = "homework2-part3.html">Part3</a></li>
+		<li><a href = "homework2.html">Homework 2 Main Page</a></li>
+	</ul>
+</div>
+<a href = "../index.html" class = "links"> Back to the home page</a>
+</body>
+
+</html>

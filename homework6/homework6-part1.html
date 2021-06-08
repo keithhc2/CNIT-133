@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #6 for CNIT 133">
+	<title>Part 1 - Using Math Operations for Rounding</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+
+
+</head>
+<body style = "background-color: #d0d0ff;">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		document.getElementById("submitButton").addEventListener("click", processNumbers);
+	});
+	function processNumbers(){
+		var userInput = document.getElementById("textField").value;
+		if (userInput.indexOf('.') === -1){ //Missing decimal in the number
+			document.getElementById("results").innerHTML = "Please ensure that your input is a valid number and has at least four decimal places.";
+		}
+		else{
+			var fourDecimalRegex = /^(\d+).(\d{4})(\d*)$/;
+			var processedNumber = parseFloat(userInput);
+			var addTrailingZero = userInput.split(".")[1].length; //[1, 2340]
+			var fullNumber = processedNumber.toFixed(addTrailingZero);
+			if (fourDecimalRegex.test(fullNumber)){
+				var roundedNumber = Math.round(fullNumber);
+				var roundedSquareRoot = Math.round(Math.sqrt(fullNumber));
+				var roundedToTenths = Math.round(fullNumber*10)/10
+				var roundedToHundredths = Math.round(fullNumber*100)/100;
+				var roundedToThousandths = Math.round(fullNumber*1000)/1000;
+				var resultString = "<table>";
+				resultString += "<tr><td>Your inputted number: " + fullNumber + "</td></tr>";
+				resultString += "<tr><td>Square root of your number rounded to an integer: " +
+								 roundedSquareRoot + "</td></tr>";
+				resultString += "<tr><td>Your number rounded to an integer: " + roundedNumber + "</td></tr>";
+				resultString += "<tr><td>Your number rounded to the nearest tenths: " + roundedToTenths + "</td></tr>";
+				resultString += "<tr><td>Your number rounded to the nearest hundredths: " +
+								 roundedToHundredths + "</td></tr>";
+				resultString += "<tr><td>Your number rounded to the nearest thousandths: " +
+								 roundedToThousandths + "</td></tr>";
+				resultString += "</table>";
+
+				document.getElementById("results").innerHTML = resultString;
+			}
+			else{
+				document.getElementById("results").innerHTML = "Please ensure that your input is a valid number and has at least four decimal places.";
+			}
+		}
+	}
+	
+</script>
+<h2>Part 1 - Using Math Operations for Rounding</h2>
+
+<p>Enter a number with at least four decimal places: 
+	<input type = "number" id = "textField"> <input type = "button" value = "Submit" id ="submitButton"> </p> 
+
+<div id = "results">
+</div>
+
+<h2>Other parts of Homework 6:</h2>
+<div class = "links">
+	<ul>
+		<li><a href = "homework6-part1.html">Part 1 - Using Math Operations for Rounding</a></li>
+		<li><a href = "homework6-part2.html">Part 2 - Counting Character Occurrences</a></li>
+		<li><a href = "homework6-part3.html">Part 3 - Phone Number Processing</a></li>
+	</ul>
+</div>
+<a href = "../index.html">Back to the main page</a>
+</body>
+</html>

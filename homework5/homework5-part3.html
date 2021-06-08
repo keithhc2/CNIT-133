@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #5 for CNIT 133">
+	<title>Keith Chan - CNIT 133 - Homework 5 - Part 3</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+
+	<style>
+		body{
+			background-color: #d0d0ff;
+			font-size: 20px;
+		}
+		table, th, td {
+		  border: 1px solid black;
+		}
+	</style>
+
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		document.getElementById("infoButton").addEventListener("click", displayResults);
+	});
+	function buildArrayString(array1, positionNum){
+		var result = "Thanks for your inquiry. Here is the information you requested:" + "<br>";
+		result += "State abbr. = " + array1[positionNum][0] + "<br>";
+		result += "State Name = " + array1[positionNum][1] + "<br>";
+		result += "Capital = " + array1[positionNum][2] + "<br>";
+		result += "Population = " + array1[positionNum][3] + "<br>";
+		return result;
+	}
+	function displayResults(){
+		var foundState = false;
+		var stateArray = [
+							["AL", "Alabama", "Montgomery", "4,887,871"],
+							["AK", "Alaska", "Juneau", "737,438"],
+							["AZ", "Arizona", "Phoenix", "7,171,646"],
+							["AR", "Arkansas", "Little Rock", "3,010,825"],
+							["CA", "California", "Sacramento", "39,557,015"],
+							["CO", "Colorado", "Denver", "5,694,564"]
+						 ];
+		var stateString = document.getElementById("textField").value;
+		if (stateString.length == 2){
+			for (i = 0; i < stateArray.length; i++){
+				if (stateString.toUpperCase() === stateArray[i][0].toUpperCase()){
+					result  = buildArrayString(stateArray, i);
+					foundState = true;
+					break;
+				}
+			}
+		}
+		else if (stateString.length > 2){
+			for (i = 0; i < stateArray.length; i++){
+				if (stateString.toUpperCase() === stateArray[i][1].toUpperCase()){
+					result  = buildArrayString(stateArray, i);
+					foundState = true;
+					break;
+				}
+			}
+		}
+		if (foundState === true){
+			document.getElementById("results").innerHTML = result;
+			tableString = "<table>";
+			tableString += "<tr>";
+			tableString += "<td>State Abbr.</td>";
+			tableString += "<td>State Name</td>";
+			tableString += "<td>Capital</td>";
+			tableString += "<td>Population</td>";
+			tableString+= "</tr>";
+			for (i = 0; i < stateArray.length; i++){
+				tableString += "<tr>";
+				for (j = 0; j < stateArray[i].length; j++){
+					tableString += "<td>" + stateArray[i][j] + "</td>";
+				}
+				tableString += "</tr>";
+			}
+			tableString += "</table>";
+			document.getElementById("stateTable").innerHTML = tableString;
+		}
+		if (foundState === false){
+			document.getElementById("results").innerHTML = "Please enter a valid state. You can enter AL (Alabama), AK (Alaska), AZ (Arizona), AR (Arkansas), CA (California), or CO (Colorado).";
+		}
+
+
+	}
+</script>
+<h2>Part 3 - Displaying state census data</h2>
+
+<input type = "text" id = "textField"> <input type = "button" value = "State Info" id = "infoButton"><br><br>
+<div id = "results"></div><br>
+<div id = "stateTable"></div>
+<h2>Other parts of Homework 5:</h2>
+<div class = "links">
+
+<ul>
+	<li><a href = "homework5-part1.html">Part 1 - Simple webpage processing</a></li>
+	<li><a href = "homework5-part2.html">Part 2 - Dropdown menus with destinations</a></li>
+	<li><a href = "homework5-part3.html">Part 3 - Displaying state census data</a></li>
+</ul>
+
+</div>
+<a href = "../index.html" class = "links">Back to the main page</a>
+</body>
+
+</html>
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #4 for CNIT 133">
+	<title>Keith Chan - CNIT 133 - Homework 4 - Part 1</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+
+<style>
+	.results{
+		font-size: 20px;
+	}
+	#draggable{
+		 width: 150px; height: 150px; padding: 0.5em; border-style: solid;
+	}
+</style>
+</head>
+<body style = "background-color: #d0d0ff;">
+
+<h2>Homework 4 - Part 1 - Sample calculations using loops and a draggable component</h2>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+	$(document).ready(function(){
+		var multiplyResult1 = everyFourthMultiply();
+		var additionResult1 = everyFourthAddition();
+
+		document.getElementById("addResult1").innerHTML = "The result of 5 + 9 + 13 + 17 + 21 is "
+		 + additionResult1.toString();
+		document.getElementById("multiplyResult1").innerHTML = "The result of 5 * 9 * 13 * 17 * 21 is " 
+		 + multiplyResult1.toString();
+
+		 var additionResult2 = everyThirdAddition();
+		 var multiplyResult2 = everyThirdMultiply();
+		 document.getElementById("addResult2").innerHTML = "The result of 3 + 6 + 9 + 12 + 15 + 18 + 21 is " 
+		  + additionResult2.toString();
+		 document.getElementById("multiplyResult2").innerHTML = "The result of 3 * 6 * 9 * 12 * 15 * 18 * 21 is " 
+		  + multiplyResult2.toString();
+	});
+	$(function(){
+		$("#draggable").draggable();
+	});
+
+	function everyFourthAddition(){
+		var result = 0;
+		for (i = 5; i < 25; i+=4){
+			result += i;
+		}
+		return result;
+	}	
+	function everyFourthMultiply(){
+		var result = 1;
+		for (i = 5; i < 25; i+=4){
+			result *= i;
+		}
+		return result;
+	}
+	function everyThirdAddition(){
+		var result = 0;
+		i = 3;
+		do {
+			result += i;
+			i += 3;
+		}while(i <= 21);
+		return result;
+	}
+	function everyThirdMultiply(){
+		var result = 1;
+		i = 3;
+		do{
+			result *= i;
+			i += 3;
+		}while(i <= 21);
+		return result;
+	}
+</script>
+<h3>Part 1a:</h3>
+<div class = "results">
+	<p id = "addResult1"></p>
+	<p id = "multiplyResult1"></p>
+</div>
+<h3>Part 1b:</h3>
+<div class = "results">
+	<p id = "addResult2"></p>
+	<p id = "multiplyResult2"></p>
+</div>
+<div id = "draggable">
+	<p>Drag me to wherever you want!</p>
+</div>
+<h2>Other parts of homework 4:</h2>
+<div class = "links">
+	<ul>
+		<li><a href = "homework4-part1.html">Part 1 - Sample calculations using loops and a draggable component</a></li>
+		<li><a href = "homework4-part2.html">Part 2 - Calculating compound interest</a></li>
+		<li><a href = "homework4-extra_credit.html">Extra Credit - Building a square</a></li>
+	</ul>
+</div>
+<a href = "../index.html" class = "links">Back to the main page</a>
+</body>
+
+</html>

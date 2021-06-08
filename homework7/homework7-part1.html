@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #7 for CNIT 133">
+	<title>Keith Chan - CNIT 133 - Homework 7</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+</head>
+<body style = "background-color: #d0d0ff;">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		var comicButton = document.getElementById("button1");
+		var arialButton = document.getElementById("button2");
+		comicButton.addEventListener("click", processFont);
+		arialButton.addEventListener("click", processFont);
+	});
+	function processColor(){
+		var color = document.getElementById("dropdownMenu").value;
+		if (color === "What color do you want?"){
+			document.body.style.backgroundColor = "#d0d0ff";
+		}
+		document.body.style.backgroundColor = color;
+	}
+	function processFontSize(){
+		var fontArray = ["radio1", "radio2", "radio3"];
+		var fontID = "";
+		for (i = 0; i < fontArray.length; i++){
+			console.log(fontArray[i]);
+			if (document.getElementById(fontArray[i]).checked){
+				console.log(document.getElementById(fontArray[i]).value);
+				document.getElementById("affectedArea").style.fontSize = document.getElementById(fontArray[i]).value;
+			}
+		}
+	}
+	function processFont(){
+		var defaultFontFamily = document.getElementById("affectedArea").style.fontFamily;
+		if (this.id === "button1"){
+			document.getElementById("affectedArea").style.fontFamily = "Comic Sans MS, Comic Sans";
+		}
+		else if (this.id === "button2"){
+			document.getElementById("affectedArea").style.fontFamily = "Arial";
+		}
+	}
+	function processWeight(){
+		if (document.getElementById("bold").checked){
+			document.getElementById("affectedArea").style.fontWeight = "bold";
+		}
+		if (document.getElementById("italics").checked){
+			document.getElementById("affectedArea").style.fontStyle = "italic";
+		}
+		if (!document.getElementById("bold").checked){
+			document.getElementById("affectedArea").style.fontWeight = "normal";
+		}
+		if (!document.getElementById("italics").checked){
+			document.getElementById("affectedArea").style.fontStyle = "normal";
+		}
+	}
+
+</script>
+
+<h2>Part 1 - Using Selections to Change Page Style</h2>
+
+<p>Make some selections below to change the styling of this page's text!</p>
+<div id = "affectedArea">
+<form>
+	
+	<p>Change this page's background color: 
+		<select name = "dropdown" id = "dropdownMenu" onchange = "processColor()">
+			<option>What color do you want?</option>
+			<option value = "#FF8C00">Dark Orange</option>
+			<option value = "#FAEBD7">Antique White</option>
+			<option value = "#FF7F50">Coral</option>
+			<option value = "#B22222">Brick</option>
+		</select>
+	</p>
+	<div onchange = "processFontSize()">
+		<p>Change this area's font size:
+			<input type = "radio" name = "radio" id = "radio1" value = "14px">
+			<label for = "radio1">Small</label>
+
+			<input type = "radio" name = "radio" id = "radio2" value = "18px">
+			<label for = "radio2">Medium</label>
+
+			<input type = "radio" name = "radio" id = "radio3" value = "24px">
+			<label for = "radio3">Large</label>
+		</p>
+	</div>
+	<div>
+		<p>Change this area's font:
+			<input type = "button" id = "button1" value = "Comic Sans">
+			<input type = "button" id = "button2" value = "Arial">
+		</p>
+	</div>
+	<div onchange = "processWeight()">
+		<p>Want italics or bold? Or both?
+			<input type = "checkbox" name = "checkbox" id ="italics">
+			<label for = "italics">Italics</label>
+
+			<input type = "checkbox" name = "checkbox" id = "bold">
+			<label for = "bold">Bold</label>
+
+		</p>
+	</div>
+
+</form>
+</div>
+
+<h2>Other parts of Homework 7:</h2>
+<div class = "links">
+	<ul>
+		<li><a href = "homework7-part1.html">Part 1 - Using Selections to Choose Page Style</a></li>
+		<li><a href = "homework7-part2.html">Part 2 - Navigation Bar Practice</a></li>
+	</ul>
+<a href = "../index.html">Back to the main page</a>
+</div>
+</body>
+
+</html>

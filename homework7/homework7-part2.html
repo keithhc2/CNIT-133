@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #7 for CNIT 133">
+	<title>Keith Chan - CNIT 133 - Homework 7</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+
+	<style>
+
+		nav {background:#FFF; float:left;}
+		nav ul {text-align:center;}
+		nav ul li {float:left; display:inline;}
+		nav ul li:hover {background:#E6E6E6;}
+		nav ul li a {display:block; padding:15px 25px; color:#444; text-decoration:none; } 
+		/* ↑ Each individual homework list item*/
+		nav ul li ul {position:absolute; width:120px; background:#444;}
+		nav ul li ul li {width:120px;}
+		nav ul li ul li a {display:block; padding:15px 10px; color:#FFF;}
+		nav ul li ul li:hover a {background:#D1D1D1; color:#F00;}
+		/* ↑ On hover, make the background D1D1D1 and the text color red*/
+		nav ul li ul.fallback {display:none;}
+		nav ul li:hover ul.fallback {display:block;}
+
+	</style>
+
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+
+		$(document).ready(function(){
+		$('nav li ul').hide().removeClass('fallback');
+		$('nav li').hover(
+		  function () {
+		    $('ul', this).stop().slideDown(200);
+		  },
+		  function () {
+		    $('ul', this).stop().slideUp(200);
+		  }
+		);
+		});
+	</script>
+
+
+<h2>Part 2 - Navigation Bar Practice</h2>
+
+<nav>
+	<ul>
+		<li>
+			<a href = "../homework2/homework2.html">Homework 2</a>
+			<ul class style = "display:none;">
+				<li>
+					<a href = "../homework2/homework2-part1.html">Part 1</a>
+				</li>
+				<li>
+					<a href = "../homework2/homework2-part2.html">Part 2</a>
+				</li>
+				<li>
+					<a href = "../homework2/homework2-part3.html">Part 3</a>
+				</li>
+				<li>
+					<a href = "../homework2/homework2-extra_credit.html">Extra Credit</a>
+				</li>
+			</ul>
+		</li>
+
+		<li>
+			<a href = "../homework3/homework3.html">Homework 3</a>
+			<ul class style = "display:none;">
+				<li>
+					<a href = "../homework3/homework3-part1.html">Part 1</a>
+				</li>
+				<li>
+					<a href = "../homework3/homework3-part2.html">Part 2</a>
+				</li>
+				<li>
+					<a href = "../homework3/homework3-part3.html">Part 3</a>
+				</li>
+				<li>
+					<a href = "../homework3/homework3-part4.html">Part 4</a>
+				</li>
+			</ul>
+		</li>
+
+		<li>
+			<a href = "../homework4/homework4.html">Homework 4</a>
+			<ul class style = "display:none;">
+				<li>
+					<a href = "../homework4/homework4-part1.html">Part 1</a>
+				</li>
+				<li>
+					<a href = "../homework4/homework4-part2.html">Part 2</a>
+				</li>
+				<li>
+					<a href = "../homework4/homework4-extra_credit.html">Extra Credit</a>
+				</li>
+			</ul>
+		</li>
+
+		<li>
+			<a href = "../homework5/homework5.html">Homework 5</a>
+			<ul class style = "display:none;">
+				<li>
+					<a href = "../homework5/homework5-part1.html">Part 1</a>
+				</li>
+				<li>
+					<a href = "../homework5/homework5-part2.html">Part 2</a>
+				</li>
+				<li>
+					<a href = "../homework5/homework5-part3.html">Part 3</a>
+				</li>
+			</ul>
+		</li>
+
+		<li>
+			<a href = "../homework6/homework6.html">Homework 6</a>
+			<ul class style = "display:none;">
+				<li>
+					<a href = "../homework6/homework6-part1.html">Part 1</a>
+				</li>
+				<li>
+					<a href = "../homework6/homework6-part2.html">Part 2</a>
+				</li>
+				<li>
+					<a href = "../homework6/homework6-part3.html">Part 3</a>
+				</li>
+			</ul>
+		</li>
+
+		<li>
+			<a href = "../homework7/homework7.html">Homework7</a>
+			<ul class style = "display:none;">
+				<li>
+					<a href = "./homework7-part1.html">Part 1</a>
+				</li>
+				<li>
+					<a href = "./homework7-part2.html">Part 2</a>
+				</li>
+			</ul>
+		</li>
+
+	</ul>
+</nav>
+<br>
+<br>
+<br>
+<br>
+
+<h2>Other parts of Homework 7:</h2>
+<div class = "links">
+	<ul>
+		<li><a href = "homework7-part1.html">Part 1 - Using Selections to Change Page Style</a></li>
+		<li><a href = "homework7-part2.html">Part 2 - Navigation Bar Practice</a></li>
+	</ul>
+	<a href = "../index.html">Back to the main page</a>
+</div>
+
+</body>
+
+</html>

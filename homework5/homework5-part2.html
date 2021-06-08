@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #5 for CNIT 133">
+	<title>Keith Chan - CNIT 133 - Homework 5 - Part 2</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+
+<style>
+	p{
+		font-size: 20px;
+	}
+</style>
+
+
+</head>
+<body style = "background-color: #d0d0ff;">
+
+<h2>Part 2 - Dropdown menus with destinations</h2>
+
+<p>Using onChange:</p>
+<select name = "destList1" id = "destList1">
+	<option>Choose your destination wisely</option>
+	<option value = "https://www.google.com/">Google</option>
+	<option value = "https://www.youtube.com/">YouTube</option>
+	<option value = "https://www.reddit.com/">Reddit</option>
+	<option value = "https://www.ccsf.edu/">CCSF</option>
+</select>
+
+<br>
+<p>Using a button:</p>
+<select name = "destList2" id = "destList2">
+	<option>Pick one and click Go!</option>
+	<option value = "https://bing.com/">Bing</option>
+	<option value = "https://gmail.com/">Gmail</option>
+	<option value = "https://linkedin.com/">LinkedIn</option>
+	<option value = "https://cnn.com/">CNN</option>
+</select>
+<input type = "button" value = "Go!" id = "goButton">
+
+<h2>Other parts of Homework 5:</h2>
+<div class = "links">
+	<ul>
+		<li><a href = "homework5-part1.html">Part 1 - Simple webpage processing</a></li>
+		<li><a href = "homework5-part2.html">Part 2 - Dropdown menus with destinations</a></li>
+		<li><a href = "homework5-part3.html">Part 3 - Displaying state census data</a></li>
+	</ul>
+</div>
+<a href = "../index.html" class = "links">Back to the main page</a>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	function firstDestListFunction(){
+		var destination = document.getElementById("destList1").value;
+		if (destination !== "Choose your destination wisely"){
+			window.location.href = destination;
+		}
+	}
+	document.getElementById("destList1").onchange = firstDestListFunction;
+
+	function secondDestListFunction(){
+		var destination = document.getElementById("destList2").value;
+		if (destination !== "Pick one and click Go!"){
+			window.location.href = destination;
+		}
+	}
+	var goButton = document.getElementById("goButton");
+	goButton.addEventListener("click", secondDestListFunction);
+</script>
+</body>
+</html>

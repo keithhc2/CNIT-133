@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #4 for CNIT 133">
+	<title>Keith Chan - CNIT 133 - Homework 4 - Extra Credit</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+	<style>
+		#showSquare{
+			font-size: 20px;
+			font-family: 'Courier New', monospace;
+			line-height: 62%;
+		}
+	</style>
+</head>
+<body style = "background-color: #d0d0ff;">
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#myForm").validate({
+			rules:{
+				answer : {required: true, number: true, min: 2, max: 10}
+			}
+		});
+		$("#submitButton").click(buildSquare);
+	});
+	function buildSquare(){
+		if ($("#sides").valid()){
+			var lengthOfSide = parseInt(document.getElementById("sides").value); 
+			//&nbsp; for multiple spaces because " " does not repeat
+			var square = "";
+			var top = "*".repeat(lengthOfSide) + "<br>";
+			//this is HTML, so <br> instead of \n
+			square += top;
+			for (i = 0; i < lengthOfSide-2; i++){
+				side = "*";
+				side += "&nbsp;".repeat((lengthOfSide-2));
+				//It's two spaces each "*"
+				side += "*";
+				side += "<br>";
+				square += side;
+			}
+			var bottom = "*".repeat(lengthOfSide);
+			square += bottom;
+			document.getElementById("yourSquare").style.display = "block";
+			document.getElementById("showSquare").innerHTML = square;
+		}
+	}
+
+</script>
+<h2>Homework 4 - Extra Credit - Building a square</h2>
+<div>
+	<form id = "myForm">
+		<p>How long do you want a side of your square to be?</p>
+		<input type = "text" id = "sides" name = "answer"> <input type = "button" value = "Submit" id = "submitButton">
+	</form>
+</div>
+<p  style = "display:none;" id ="yourSquare">Your square:</p>
+<p id = "showSquare"></p>
+<h2>Other parts of homework 4:</h2>
+<div class = "links">
+	<ul>
+		<li><a href = "homework4-part1.html">Part 1 - Sample calculations using loops and a draggable component</a></li>
+		<li><a href = "homework4-part2.html">Part 2 - Calculating compound interest</a></li>
+		<li><a href = "homework4-extra_credit.html">Extra Credit - Building a square</a></li>
+	</ul>
+</div>
+<a href = "../index.html" class = "links">Back to the main page</a>
+</body>
+
+</html>

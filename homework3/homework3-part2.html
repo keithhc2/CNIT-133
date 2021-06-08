@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #3 for CNIT 133">
+	<title>Keith Chan - CNIT 133 - Homework 3</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+<style>
+	.headings{
+		text-align: center;
+	}
+	.tooltip-styling{
+	    background:white !important;
+	    color: black !important;
+	    width:300px;
+	    position: absolute;
+	}
+	.fields{
+		text-align: right;
+	}
+
+</style>
+</head>
+<body style = "background-color: #d0d0ff;">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#itemForm").validate({
+			rules:{
+				item1: {required: true, number: true, min: 0},
+				item2: {required: true, number: true, min: 0},
+				item3: {required: true, number: true, min: 0},
+				item4: {required: true, number: true, min: 0}
+			}
+		});
+	function processNums(){
+		//console.log("hello!");
+		if($("#itemForm").valid()){
+			var item1Num = parseInt(document.getElementById("item1").value);
+			var item2Num = parseInt(document.getElementById("item2").value);
+			var item3Num = parseInt(document.getElementById("item3").value);
+			var item4Num = parseInt(document.getElementById("item4").value);
+			$("#item1Sold").val(item1Num);
+			$("#item2Sold").val(item2Num);
+			$("#item3Sold").val(item3Num);
+			$("#item4Sold").val(item4Num);
+			var item1Earnings = item1Num*239.99;
+			var item2Earnings = item2Num*129.75;
+			var item3Earnings = item3Num*99.95;
+			var item4Earnings = item4Num*350.89
+			$("#item1Total").val(item1Earnings.toFixed(2));
+			$("#item2Total").val(item2Earnings.toFixed(2));
+			$("#item3Total").val(item3Earnings.toFixed(2));
+			$("#item4Total").val(item4Earnings.toFixed(2));
+			var totalAmountSold = item1Num + item2Num + item3Num + item4Num;
+			$("#totalAmountSold").val(totalAmountSold);
+			var totalEarnings = item1Earnings + item2Earnings + item3Earnings + item4Earnings;
+			$("#totalEarnings").val(totalEarnings.toFixed(2));
+			var totalCommission = (totalEarnings*0.09) + 200
+			$("#totalCommission").val(totalCommission.toFixed(2));
+
+			document.getElementById("totalEarningsFormula").innerHTML = " Total Weekly Commissions Formula: (Sum of all sold items' prices * 9%) + 200";
+		}
+	}
+	function resetFields(){
+		document.getElementById("salesperson").value = "";
+		document.getElementById("item1").value = "";
+		document.getElementById("item2").value = "";
+		document.getElementById("item3").value = "";
+		document.getElementById("item4").value = "";
+		document.getElementById("item1Sold").value = "";
+		document.getElementById("item1Total").value = "";
+		document.getElementById("item2Sold").value = "";
+		document.getElementById("item2Total").value = "";
+		document.getElementById("item3Sold").value = "";
+		document.getElementById("item3Total").value = "";
+		document.getElementById("item4Sold").value = "";
+		document.getElementById("item4Total").value = "";
+		document.getElementById("totalAmountSold").value = "";
+		document.getElementById("totalEarnings").value = "";
+		document.getElementById("totalCommission").value = "";
+	}
+	$("#submitButton").click(processNums);
+	$("#resetButton").click(resetFields);
+	});
+ 	$(function(){
+ 		$("#salesperson").tooltip({
+ 			tooltipClass: "tooltip-styling",
+ 		});
+ 	});
+
+</script>
+<h2>Homework 3 - Part 2 - Calculating Commissions</h2>
+<p>Salesperson: <input class="col-sm-3 text-center" type = "text" id = "salesperson" title="Please make sure that the salesperson's name is spelled correctly."></p>
+<br>
+<h2>Input the number of items sold for each item number:</h2>
+<form id = "itemForm">
+	<table>
+		<tr>
+			<td>Item 1:</td>
+			<td><input name = "item1" id = "item1" class = "fields"></td>
+		</tr>
+		<tr>
+			<td>Item 2:</td>
+			<td><input name = "item2" id = "item2" class = "fields"></td>
+		</tr>
+		<tr>
+			<td>Item 3:</td>
+			<td><input name = "item3" id = "item3" class = "fields"></td>
+		</tr>
+		<tr>
+			<td>Item 4:</td>
+			<td><input name = "item4" id = "item4" class = "fields"></td>
+		</tr>
+	</table>
+</form>
+<br>
+
+<input type = "button" value = "Submit" id = "submitButton">
+<input type = "button" value = "Reset" id = "resetButton">
+<br><br>
+<table>
+	<tr class = "headings">
+		<td>Item #</td>
+		<td>Price</td>
+		<td>Number Sold</td>
+		<td>Total</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>$239.99</td>
+		<td><input readonly id = "item1Sold" class = "fields"></td>
+		<td><input readonly id = "item1Total" class = "fields"></td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>$129.75</td>
+		<td><input readonly id = "item2Sold" class = "fields"></td>
+		<td><input readonly id = "item2Total" class = "fields"></td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>$99.95</td>
+		<td><input readonly id = "item3Sold" class = "fields"></td>
+		<td><input readonly id = "item3Total" class = "fields"></td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>$350.89</td>
+		<td><input readonly id = "item4Sold" class = "fields"></td>
+		<td><input readonly id = "item4Total" class = "fields"></td>
+	</tr>
+	<tr>
+		<td colspan = "3">Total Amount Sold:</td>
+		<td><input readonly id = "totalAmountSold" class = "fields"></td>
+	</tr>
+	<tr>
+		<td colspan = "3">Total Price of Items Sold:</td>
+		<td><input readonly id = "totalEarnings" class = "fields"></td>
+	</tr>
+	<tr>
+		<td colspan = "3">Total Weekly Commissions:</td>
+		<td><input readonly id = "totalCommission" class = "fields"></td>
+	</tr>
+
+</table>
+<div id = "totalEarningsFormula"></div>
+
+<div class = "links">
+	<ul>
+		<li><a href = "homework3-part1.html">Part 1 - Calculating a student's final score</a></li>
+		<li><a href = "homework3-part2.html">Part 2 - Calculating commissions</a></li>
+		<li><a href = "homework3-part3.html">Part 3 - Converting temperatures</a></li>
+		<li><a href = "homework3-part4.html">Part 4 - Multiplication practice</a></li>
+	</ul>
+</div>
+<a href = "../index.html" class = "links">Back to the main page</a>
+
+</body>
+
+</html>

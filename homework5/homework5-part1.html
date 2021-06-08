@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #5 for CNIT 133">
+	<title>Keith Chan - CNIT 133 - Homework 5 - Part 1</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+
+<style>
+	body{
+		font-size: 20px;
+	}
+</style>
+
+</head>
+<body style = "background-color: #d0d0ff;">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		var submitButton = document.getElementById("submitButton")
+		submitButton.addEventListener("click", submitFunction);
+	});
+	function submitFunction(){
+		var textEntered = false;
+		if (document.getElementById("textField").value == ""){
+			document.getElementById("textDiv").innerHTML = "Please enter something in the text field.";
+		}
+		else{
+			document.getElementById("textDiv").innerHTML = "";
+			textEntered = true;
+		}
+
+		var radioIDs = ["radio1", "radio2", "radio3"];
+		var checkboxIDs = ["checkbox1", "checkbox2", "checkbox3"];
+		var radioChecked = false;
+		for (i = 0; i < radioIDs.length; i++){
+			if (document.getElementById(radioIDs[i]).checked){
+				radioChecked = true;
+			}
+		}
+		if (radioChecked != true){
+			document.getElementById("radioDiv").innerHTML = "Please select a radio button.";
+		}
+		else{
+			document.getElementById("radioDiv").innerHTML = "";
+		}
+
+		var checkboxChecked = false;
+		for (i = 0; i < checkboxIDs.length; i++){
+			if (document.getElementById(checkboxIDs[i]).checked){
+				checkboxChecked = true;
+			}
+		}
+		if (checkboxChecked != true){
+			document.getElementById("checkboxDiv").innerHTML = "Please select at least one of the checkboxes.";
+		}
+		else{
+			document.getElementById("checkboxDiv").innerHTML = "";
+		}
+		var dropdownSelected = false;
+		if (document.getElementById("dropdownMenu").value == "What's your favorite fast food restaurant?"){
+			document.getElementById("dropdownDiv").innerHTML = "Please select one of the options from the dropdown menu.";
+		}
+		else{
+			document.getElementById("dropdownDiv").innerHTML = "";
+			dropdownSelected = true;
+		}
+		if (textEntered && radioChecked && checkboxChecked && dropdownSelected){
+			console.log('hi');
+			window.location.href = "./homework5-confirmation-page.html"
+		}
+	}
+</script>
+<h2>Part 1 - Simple Webpage Processing</h2>
+
+<form method = "post" onsubmit = "submitFunction()">
+	<input type = "text" id = "textField"><br><br>
+
+	<input type = "radio" name = "radio" id = "radio1">
+	<label for = "radio1">I'm just a radio button!</label><br>
+
+	<input type = "radio" name = "radio" id = "radio2">
+	<label for = "radio2">And I'm just yet another radio button!</label><br>
+
+	<input type = "radio" name = "radio" id = "radio3">
+	<label for = "radio3">Please click me?</label><br><br>
+
+	<input type = "checkbox" name = "checkbox1" id = "checkbox1">
+	<label for = "checkbox1">I'm checkbox numero uno!</label><br>
+
+	<input type = "checkbox" name = "checkbox2" id = "checkbox2">
+	<label for = "checkbox2">A-a-and I'm checkbox dos...</label><br>
+
+	<input type = "checkbox" name = "checkbox3" id = "checkbox3">
+	<label for = "checkbox3">...I guess I'm checkbox tres.</label><br><br>
+
+	<select name = "dropdown" id = "dropdownMenu">
+		<option>What's your favorite fast food restaurant?</option>
+		<option value = "Mcdonalds">McDonald's?</option>
+		<option value = "Popeyes">Popeyes?</option>
+		<option value = "In-n-out">In-N-Out?</option>
+		<option value = "Wendys">Wendy's?</option>
+	</select><br><br>
+	<input type = "button" value = "Submit" id = "submitButton">
+</form>
+<div id = "textDiv"></div>
+<div id = "radioDiv"></div>
+<div id = "checkboxDiv"></div>
+<div id = "dropdownDiv"></div>
+
+<h2>Other parts of Homework 5:</h2>
+<div class = "links">
+	<ul>
+		<li><a href = "homework5-part1.html">Part 1 - Simple webpage processing</a></li>
+		<li><a href = "homework5-part2.html">Part 2 - Dropdown menus with destinations</a></li>
+		<li><a href = "homework5-part3.html">Part 3 - Displaying state census data</a></li>
+	</ul>
+</div>
+<a href = "../index.html">Back to the main page</a>
+</body>
+
+</html>
