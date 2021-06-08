@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Keith Chan's Homework #8 for CNIT 133">
+	<title>Keith Chan - CNIT 133 - Homework 8</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+<style>
+    .API-research{
+      width: 1000px;
+      text-align: left;
+      border: none;
+      padding: 10px;
+  }
+  
+</style>
+
+<script>
+function showHint(str) {
+  if (str.length == 0) {
+    document.getElementById("suggestions").innerHTML = "Suggestions: You didn't enter anything!";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("suggestions").innerHTML = "Suggestions: " +  this.responseText;
+      }
+    };
+    xmlhttp.open("GET", "gethint.php?q=" + str, true);
+    xmlhttp.send();
+  }
+}
+</script>
+
+</head>
+<body>
+
+<h2>Homework 8 - Simple Name Predictions</h2>
+
+<p>Enter a name and see what name predictions the page can come up with!</p>
+
+<p>This program is heavily adapted from <a href = "https://www.w3schools.com/php/php_ajax_php.asp">W3's PHP and AJAX example.</a></p>
+
+<label for = "userInputName">First name:</label>
+<input type = "text" id = "userInputName" name = "userInputName" onkeyup="showHint(this.value)">
+<p id = "suggestions">Suggestions: </p>
+
+<div class = "API-research">
+<H3>API Research</H3>
+
+<p>I am choosing to write about Twilio's SMS API, which enables developers to programmatically send SMS text messages.
+Twilio's API, but users will have to sign up for a free Twilio account. 
+After taking care of a few bureaucratic things such as verifying personal information and phone numbers,
+ users can start using the API. Users can pick from a number of languages to use with Twilio's API, 
+such as Python, Java, and even PHP. Python users, for example, will have to download and import Twilio's helper 
+library into their code, and then they can use their Twilio account's account ID and authentication token 
+(these two together as a combination serve as a sort-of header for authentication purposes) to start sending messages. 
+With Twilio's SMS API, users can set up a messaging service, receive incoming texts, and can even include MMS (multimedia)
+messages into the mix. They can even start using WhatsApp with the API!
+<br><br>
+The API returns a json response.
+<br><br>
+<a href = "https://www.twilio.com/docs/sms" >Link to Twilio's SMS API</a>
+</p>
+</div>
+</body>
+
+</html>
